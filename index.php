@@ -76,10 +76,12 @@ var language = $('input[name="language"]:checked').val();
 var sList = $('input[name="vehicle"]:checked').val();
 var timeControl = document.getElementById("timeInput").value;
 var dateControl = document.getElementById("dateInput").value;
+let unixtime = Date.parse(dateControl)/1000;
+dateControl = unixtime;
 $('input[type=checkbox]').each(function () {
     sList += "(" + $(this).val() + "-" + (this.checked ? "checked" : "not checked") + ")";
 });
-if(name!="" && email!="" && phone!="" && city!="" && language!="" && sList!="" && timeControl!="" && dateControl!=""){
+if(language!=""){
 	$.ajax({
 		url: "save.php",
 		type: "POST",
@@ -97,11 +99,12 @@ if(name!="" && email!="" && phone!="" && city!="" && language!="" && sList!="" &
 		success: function(dataResult){
 			var dataResult = JSON.parse(dataResult);
 			if(dataResult.statusCode==200){
+				console.log(dataResult);
 				$("#butsave").removeAttr("disabled");
 				$('#fupForm').find('input:text').val('');
 				$("#success").show();
 				$('#success').html('Data added successfully !'); 	
-$('#targetLegit').load('show.php');
+				$('#targetLegit').load('show.php');
 			}
 			else if(dataResult.statusCode==201){
 				alert("Error occured !");

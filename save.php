@@ -10,9 +10,17 @@
 	$sList=$_POST['sList'];
 	$timeControl=$_POST['timeControl'];
 	$dateControl=$_POST['dateControl'];
-  $sql = $con->prepare("INSERT INTO `crud`( `name`, `email`, `phone`, `city`, `language`, `sList`, `timeControl`, `dateControl`) VALUES (?,?,?,?,?,?,?,?)");
-$sql->bind_param("ssssssss", $name, $email, $phone, $city, $language, $sList, $timeControl, $dateControl);
-$rc = $sql->execute();
+  $query = "INSERT INTO `crud`(name, email, phone, city, language, sList, timeControl, dateControl) VALUES (:name, :email, :phone, :city, :language, :sList, :timeControl, :dateControl)";
+  $stmt = $conn->prepare($query);
+$stmt->bindParam(':name', $name, PDO::PARAM_STR);
+$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+$stmt->bindParam(':phone', $phone, PDO::PARAM_STR);
+$stmt->bindParam(':city', $city, PDO::PARAM_STR);
+$stmt->bindParam(':language', $language, PDO::PARAM_STR);
+$stmt->bindParam(':sList', $sList, PDO::PARAM_STR);
+$stmt->bindParam(':timeControl', $timeControl, PDO::PARAM_STR);
+$stmt->bindParam(':dateControl', $dateControl, PDO::PARAM_INT);
+$rc = $stmt->execute();
 
     if (true===$rc) {
 		echo json_encode(array("statusCode"=>200));
@@ -21,6 +29,5 @@ $rc = $sql->execute();
 		echo json_encode(array("statusCode"=>201));
 	}
       //connection closed.
-$sql->close();
- $con->close();
+
 ?>
