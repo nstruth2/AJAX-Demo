@@ -40,7 +40,7 @@
   <label for="CSS">CSS</label><br>
   <input type="radio" id="Javascript" name="language" value="JavaScript">
   <label for="Javascript">JavaScript</label><br>
-  <input type="radio" id="None" name="language" value="None">
+  <input type="radio" id="None" name="language" value="None" checked>
   <label for="None">None</label>
 </div>
 <div class="form-group">
@@ -79,10 +79,12 @@ var timeControl = document.getElementById("timeInput").value;
 var dateControl = document.getElementById("dateInput").value;
 let unixtime = Date.parse(dateControl)/1000;
 dateControl = unixtime;
+console.log(dateControl);
+console.log(unixtime);
 $('input[type=checkbox]').each(function () {
     sList += "(" + $(this).val() + "-" + (this.checked ? "checked" : "not checked") + ")";
 });
-if(constant == 1){
+if(language!=""){
 	$.ajax({
 		url: "save.php",
 		type: "POST",
@@ -98,7 +100,7 @@ if(constant == 1){
 		},
 		cache: false,
 		success: function(dataResult){
-			var dataResult = JSON.parse(dataResult);
+			dataResult = JSON.parse(dataResult);
 			if(dataResult.statusCode==200){
 				console.log(dataResult);
 				$("#butsave").removeAttr("disabled");
