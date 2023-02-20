@@ -68,6 +68,7 @@
 <script>
 $(document).ready(function() {
 $('#butsave').on('click', function() {
+var constant = 1;
 var name = $('#name').val();
 var email = $('#email').val();
 var phone = $('#phone').val();
@@ -81,7 +82,7 @@ dateControl = unixtime;
 $('input[type=checkbox]').each(function () {
     sList += "(" + $(this).val() + "-" + (this.checked ? "checked" : "not checked") + ")";
 });
-if(language!=""){
+if(constant == 1){
 	$.ajax({
 		url: "save.php",
 		type: "POST",
