@@ -12,14 +12,14 @@
 	$dateControl=$_POST['dateControl'];
   $query = "INSERT INTO `crud`(name, email, phone, city, language, sList, timeControl, dateControl) VALUES (:name, :email, :phone, :city, :language, :sList, :timeControl, :dateControl)";
   $stmt = $conn->prepare($query);
-$stmt->bindParam(':name', $name, PDO::PARAM_STR);
-$stmt->bindParam(':email', $email, PDO::PARAM_STR);
-$stmt->bindParam(':phone', $phone, PDO::PARAM_STR);
-$stmt->bindParam(':city', $city, PDO::PARAM_STR);
-$stmt->bindParam(':language', $language, PDO::PARAM_STR);
-$stmt->bindParam(':sList', $sList, PDO::PARAM_STR);
-$stmt->bindParam(':timeControl', $timeControl, PDO::PARAM_STR);
-$stmt->bindParam(':dateControl', $dateControl, PDO::PARAM_INT);
+$stmt->bindValue(':name', $name, PDO::PARAM_STR);
+$stmt->bindValue(':email', $email, PDO::PARAM_STR);
+$stmt->bindValue(':phone', $phone, PDO::PARAM_STR);
+$stmt->bindValue(':city', $city, PDO::PARAM_STR);
+$stmt->bindValue(':language', $language, PDO::PARAM_STR);
+$stmt->bindValue(':sList', $sList, PDO::PARAM_STR);
+$stmt->bindValue(':timeControl', $timeControl, PDO::PARAM_STR);
+$stmt->bindValue(':dateControl', $dateControl, PDO::PARAM_STR);
 $rc = $stmt->execute();
 
     if (true===$rc) {

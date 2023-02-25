@@ -77,10 +77,7 @@ var language = $('input[name="language"]:checked').val();
 var sList = $('input[name="vehicle"]:checked').val();
 var timeControl = document.getElementById("timeInput").value;
 var dateControl = document.getElementById("dateInput").value;
-let unixtime = Date.parse(dateControl)/1000;
-dateControl = unixtime;
 console.log(dateControl);
-console.log(unixtime);
 $('input[type=checkbox]').each(function () {
     sList += "(" + $(this).val() + "-" + (this.checked ? "checked" : "not checked") + ")";
 });
@@ -102,7 +99,6 @@ if(language!=""){
 		success: function(dataResult){
 			dataResult = JSON.parse(dataResult);
 			if(dataResult.statusCode==200){
-				console.log(dataResult);
 				$("#butsave").removeAttr("disabled");
 				$('#fupForm').find('input:text').val('');
 				$("#success").show();

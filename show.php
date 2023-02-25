@@ -10,9 +10,24 @@ if ($result->rowCount() > 0) {
   // output data of each row
 echo "<table> <style>table, td, th {
                 border: 1px solid black;
-            }</style>";
+            }</style>";          
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    echo "<tr><td>" . $row["name"]. "</td><td>" . $row["email"]. "</td><td>" . $row["phone"]. "</td><td>" . $row["city"]. "</td><td>" . $row["language"].  "</td><td>" . $row["sList"] . "</td><td>" . $row["timeControl"] . "</td><td>" . date('m/d/y',$row["dateControl"]) . "</td></tr>";
+ echo "<tr><td>" . htmlentities($row["name"]). "</td><td>" . htmlentities($row["email"]) . "</td><td>" . htmlentities($row["phone"]) . "</td><td>" . htmlentities($row["city"]) . "</td><td>" . htmlentities($row["language"]) .  "</td><td>" . htmlentities($row["sList"]) . "</td>";
+
+        if ($row["dateControl"] =="0000-00-00") {
+
+        $row["dateControl"] = "Nothing";
+        $dateReal = $row["dateControl"];
+        echo "<td>" . htmlentities($dateReal) . "</td>";
+
+    }
+
+    else {
+    $date = new DateTime($row["dateControl"]);
+echo "<td>" . htmlentities($date->format('n/j/Y')) . "</td>";
+}
+
+echo "<td>" . htmlentities($row["timeControl"]) . "</td></tr>";
 }
 echo "</table>";
 } else {
@@ -30,5 +45,4 @@ $email = <<<heredocEmail
 </div>
 heredocEmail;
 echo $email;
-
 ?>
