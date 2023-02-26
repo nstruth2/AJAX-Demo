@@ -52,7 +52,7 @@
 <label for="vehicle3"> I have a boat</label><br>
 <div>
 	<label for="timeInput">Choose a time for your meeting:</label>
-	<input type=time id="timeInput" name="timeInput" step="1">
+	<input type=time id="timeInput" name="timeInput" step="1" required>
 </div>
 <div>
 </div>
@@ -74,16 +74,14 @@ var phone = $('#phone').val();
 var city = $('#city').val();
 var language = $('input[name="language"]:checked').val();
 var sList = $('input[name="vehicle"]:checked').val();
+var timeControl = document.getElementById("timeInput").value;
+var dateControl = document.getElementById("dateInput").value;
+$('input[type=checkbox]').each(function () {
+    sList += "(" + $(this).val() + "-" + (this.checked ? "checked" : "not checked") + ")";
+});
 var hasBeenClicked = 0;
 $('#timeInput').click(function(){
 		hasBeenClicked = 1;
-});
-
-var timeControl = document.getElementById("timeInput").value;
-var dateControl = document.getElementById("dateInput").value;
-
-$('input[type=checkbox]').each(function () {
-    sList += "(" + $(this).val() + "-" + (this.checked ? "checked" : "not checked") + ")";
 });
 $(document).ready(function() {
 $('#butsave').on('click', function() {
@@ -99,7 +97,7 @@ $('#butsave').on('click', function() {
 			sList: sList,
 			hasBeenClicked: hasBeenClicked,
 			timeControl: timeControl,
-			dateControl: dateControl,
+			dateControl: dateControl
 		},
 		cache: false,
 		success: function(dataResult){

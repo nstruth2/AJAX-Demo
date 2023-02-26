@@ -15,7 +15,7 @@
 		{
 			$timeControl = NULL;
 		}
-  $query = "INSERT INTO `crud`(name, email, phone, city, language, sList, timeControl, dateControl) VALUES (:name, :email, :phone, :city, :language, :sList, :dateControl, :timeControl)";
+  $query = "INSERT INTO `crud`(name, email, phone, city, language, sList, timeControl, dateControl) VALUES (:name, :email, :phone, :city, :language, :sList, :timeControl, :dateControl)";
   $stmt = $conn->prepare($query);
 $stmt->bindValue(':name', $name, PDO::PARAM_STR);
 $stmt->bindValue(':email', $email, PDO::PARAM_STR);
