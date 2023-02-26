@@ -12,22 +12,32 @@ echo "<table> <style>table, td, th {
                 border: 1px solid black;
             }</style>";          
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
- echo "<tr><td>" . htmlentities($row["name"]). "</td><td>" . htmlentities($row["email"]) . "</td><td>" . htmlentities($row["phone"]) . "</td><td>" . htmlentities($row["city"]) . "</td><td>" . htmlentities($row["language"]) .  "</td><td>" . htmlentities($row["sList"]) . "</td>";
+ echo "<tr><td>" . htmlspecialchars($row["name"], ENT_QUOTES, 'UTF-8'). "</td><td>" . htmlspecialchars($row["email"], ENT_QUOTES, 'UTF-8') . "</td><td>" . htmlspecialchars($row["phone"], ENT_QUOTES, 'UTF-8') . "</td><td>" . htmlspecialchars($row["city"], ENT_QUOTES, 'UTF-8') . "</td><td>" . htmlspecialchars($row["language"], ENT_QUOTES, 'UTF-8') .  "</td><td>" . htmlspecialchars($row["sList"], ENT_QUOTES, 'UTF-8') . "</td>";
 
         if ($row["dateControl"] =="0000-00-00") {
 
         $row["dateControl"] = "Nothing";
-        $dateReal = $row["dateControl"];
-        echo "<td>" . htmlentities($dateReal) . "</td>";
+        echo "<td>" . htmlspecialchars($row['dateControl'], ENT_QUOTES, 'UTF-8') . "</td>";
 
     }
 
     else {
     $date = new DateTime($row["dateControl"]);
-echo "<td>" . htmlentities($date->format('n/j/Y')) . "</td>";
+echo "<td>" . htmlspecialchars($date->format('n/j/Y'), ENT_QUOTES, 'UTF-8') . "</td>";
 }
 
-echo "<td>" . htmlentities($row["timeControl"]) . "</td></tr>";
+if ($row['timeControl'] == NULL) {
+
+    $row["timeControl"] = "Nothing";
+    echo "<td>" . htmlspecialchars($row['timeControl'], ENT_QUOTES, 'UTF-8') . "</td></tr>"; 
+
+}
+else {
+    $newDate = new DateTime($row['timeControl']);
+echo "<td>" . htmlspecialchars($newDate->format('g:i:s A'), ENT_QUOTES, 'UTF-8') . "</td></tr>";
+
+}
+
 }
 echo "</table>";
 } else {

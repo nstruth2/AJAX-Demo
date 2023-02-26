@@ -55,6 +55,8 @@
 	<input type=time id="timeInput" name="timeInput" step="1">
 </div>
 <div>
+</div>
+<div>
 	<label for="dateInput">Choose a date for your meeting:</label>
 	<input type=date id="dateInput" name="dateInput">
 </div>
@@ -66,22 +68,25 @@
 <p id="target">
 </p>
 <script>
-$(document).ready(function() {
-$('#butsave').on('click', function() {
-var constant = 1;
 var name = $('#name').val();
 var email = $('#email').val();
 var phone = $('#phone').val();
 var city = $('#city').val();
 var language = $('input[name="language"]:checked').val();
 var sList = $('input[name="vehicle"]:checked').val();
+var hasBeenClicked = 0;
+$('#timeInput').click(function(){
+		hasBeenClicked = 1;
+});
+
 var timeControl = document.getElementById("timeInput").value;
 var dateControl = document.getElementById("dateInput").value;
-console.log(dateControl);
+
 $('input[type=checkbox]').each(function () {
     sList += "(" + $(this).val() + "-" + (this.checked ? "checked" : "not checked") + ")";
 });
-if(language!=""){
+$(document).ready(function() {
+$('#butsave').on('click', function() {
 	$.ajax({
 		url: "save.php",
 		type: "POST",
@@ -92,8 +97,9 @@ if(language!=""){
 			city: city,	
 			language: language,
 			sList: sList,
+			hasBeenClicked: hasBeenClicked,
 			timeControl: timeControl,
-			dateControl: dateControl
+			dateControl: dateControl,
 		},
 		cache: false,
 		success: function(dataResult){
@@ -104,6 +110,7 @@ if(language!=""){
 				$("#success").show();
 				$('#success').html('Data added successfully !'); 	
 				$('#targetLegit').load('show.php');
+				hasBeenClicked = 0;
 			}
 			else if(dataResult.statusCode==201){
 				alert("Error occured !");
@@ -113,10 +120,6 @@ if(language!=""){
 	}
 
 	});
-}
-else {
-alert('Please fill all the fields !');
-}
 ;
 });
 });

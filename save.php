@@ -2,15 +2,20 @@
 	include 'database.php';
 	error_reporting(E_ALL);
     ini_set('display_errors', 1);
-	$name=$_POST['name'];
-	$email=$_POST['email'];
-	$phone=$_POST['phone'];
-	$city=$_POST['city'];
-	$language=$_POST['language'];
-	$sList=$_POST['sList'];
-	$timeControl=$_POST['timeControl'];
-	$dateControl=$_POST['dateControl'];
-  $query = "INSERT INTO `crud`(name, email, phone, city, language, sList, timeControl, dateControl) VALUES (:name, :email, :phone, :city, :language, :sList, :timeControl, :dateControl)";
+	$name=trim($_POST['name']);
+	$email=trim($_POST['email']);
+	$phone=trim($_POST['phone']);
+	$city=trim($_POST['city']);
+	$language=trim($_POST['language']);
+	$sList=trim($_POST['sList']);
+	$timeControl=trim($_POST['timeControl']);
+	$dateControl=trim($_POST['dateControl']);
+	$hasBeenClicked =trim($_POST['hasBeenClicked']);
+	if($hasBeenClicked == 0)
+		{
+			$timeControl = NULL;
+		}
+  $query = "INSERT INTO `crud`(name, email, phone, city, language, sList, timeControl, dateControl) VALUES (:name, :email, :phone, :city, :language, :sList, :dateControl, :timeControl)";
   $stmt = $conn->prepare($query);
 $stmt->bindValue(':name', $name, PDO::PARAM_STR);
 $stmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -18,8 +23,8 @@ $stmt->bindValue(':phone', $phone, PDO::PARAM_STR);
 $stmt->bindValue(':city', $city, PDO::PARAM_STR);
 $stmt->bindValue(':language', $language, PDO::PARAM_STR);
 $stmt->bindValue(':sList', $sList, PDO::PARAM_STR);
-$stmt->bindValue(':timeControl', $timeControl, PDO::PARAM_STR);
 $stmt->bindValue(':dateControl', $dateControl, PDO::PARAM_STR);
+$stmt->bindValue(':timeControl', $timeControl, PDO::PARAM_STR);
 $rc = $stmt->execute();
 
     if (true===$rc) {
