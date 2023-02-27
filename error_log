@@ -1,0 +1,21 @@
+[23-Feb-2023 00:37:45 UTC] PHP Warning:  include(database.php): Failed to open stream: No such file or directory in /home/gl8crvogfwoc/public_html/sites/ajaxsql/Trying0Date/save.php on line 2
+[23-Feb-2023 00:37:45 UTC] PHP Warning:  include(): Failed opening 'database.php' for inclusion (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/gl8crvogfwoc/public_html/sites/ajaxsql/Trying0Date/save.php on line 2
+[23-Feb-2023 00:37:45 UTC] PHP Warning:  Undefined variable $conn in /home/gl8crvogfwoc/public_html/sites/ajaxsql/Trying0Date/save.php on line 14
+[23-Feb-2023 00:37:45 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/gl8crvogfwoc/public_html/sites/ajaxsql/Trying0Date/save.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/gl8crvogfwoc/public_html/sites/ajaxsql/Trying0Date/save.php on line 14
+[23-Feb-2023 01:08:20 UTC] PHP Parse error:  Unclosed '[' does not match ')' in /home/gl8crvogfwoc/public_html/sites/ajaxsql/Trying0Date/show.php on line 24
+[23-Feb-2023 19:57:58 UTC] PHP Parse error:  syntax error, unexpected identifier "htmlspecialchars", expecting "," or ";" in /home/gl8crvogfwoc/public_html/sites/ajaxsql/Trying0Date/show.php on line 34
+[25-Feb-2023 00:16:34 UTC] PHP Parse error:  syntax error, unexpected token ",", expecting "]" in /home/gl8crvogfwoc/public_html/sites/ajaxsql/PreventSQLInjection2.24/save.php on line 11
+[25-Feb-2023 00:16:35 UTC] PHP Parse error:  syntax error, unexpected token ",", expecting "]" in /home/gl8crvogfwoc/public_html/sites/ajaxsql/PreventSQLInjection2.24/save.php on line 11
+[25-Feb-2023 00:17:15 UTC] PHP Parse error:  syntax error, unexpected token ";", expecting ")" in /home/gl8crvogfwoc/public_html/sites/ajaxsql/PreventSQLInjection2.24/save.php on line 12
+[25-Feb-2023 00:38:09 UTC] PHP Parse error:  syntax error, unexpected token ";", expecting ")" in /home/gl8crvogfwoc/public_html/sites/ajaxsql/PreventSQLInjection2.24/save.php on line 6
+[25-Feb-2023 00:38:11 UTC] PHP Parse error:  syntax error, unexpected token ";", expecting ")" in /home/gl8crvogfwoc/public_html/sites/ajaxsql/PreventSQLInjection2.24/save.php on line 6
+[25-Feb-2023 00:45:07 UTC] PHP Parse error:  syntax error, unexpected string content "", expecting "-" or identifier or variable or number in /home/gl8crvogfwoc/public_html/sites/ajaxsql/PreventSQLInjection2.24/save.php on line 5
+[25-Feb-2023 15:35:25 UTC] PHP Parse error:  syntax error, unexpected token "{", expecting ")" in /home/gl8crvogfwoc/public_html/sites/ajaxsql/PreventSQLInjection2.24/save.php on line 14
+[27-Feb-2023 00:19:18 UTC] PHP Fatal error:  Uncaught Exception: Failed to parse time string (Nothing) at position 0 (N): The timezone could not be found in the database in /home/gl8crvogfwoc/public_html/sites/AJAXSQL/TimeMod2.26/show.php:36
+Stack trace:
+#0 /home/gl8crvogfwoc/public_html/sites/AJAXSQL/TimeMod2.26/show.php(36): DateTime->__construct()
+#1 {main}
+  thrown in /home/gl8crvogfwoc/public_html/sites/AJAXSQL/TimeMod2.26/show.php on line 36
