@@ -16,7 +16,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
         if ($row["dateControl"] =="0000-00-00") {
 
-        $row["dateControl"] = "Nothing";
+        $row["dateControl"] = "nothing";
         echo "<td>" . htmlspecialchars($row["dateControl"], ENT_QUOTES, 'UTF-8') . "</td>";
 
     }
@@ -28,7 +28,7 @@ echo "<td>" . htmlspecialchars($date->format('n/j/Y'), ENT_QUOTES, 'UTF-8') . "<
 
 if ($row['timeControl'] == NULL) {
 
-    $row['timeControl'] = "othing";
+    $row['timeControl'] = "nothing";
     echo "<td>" . htmlspecialchars($row["timeControl"], ENT_QUOTES, 'UTF-8') . "</td>";
 
 }
