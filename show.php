@@ -29,7 +29,7 @@ echo "<td>" . htmlspecialchars($date->format('n/j/Y'), ENT_QUOTES, 'UTF-8') . "<
 if ($row['timeControl'] == NULL) {
 
     $row['timeControl'] = "nothing";
-    echo "<td>" . htmlspecialchars($row["timeControl"], ENT_QUOTES, 'UTF-8') . "</td>";
+    echo "<td>" . htmlspecialchars($row["timeControl"], ENT_QUOTES, 'UTF-8') . "</td></tr>";
 
 }
 else {
